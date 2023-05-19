@@ -1,0 +1,4 @@
+1. guest 계정 로그인
+2. cookie
+    username : guest => amdin 변경
+3. home 화면 - flag 획득
