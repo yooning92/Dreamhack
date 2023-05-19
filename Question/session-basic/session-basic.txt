@@ -1,4 +1,5 @@
 1. guest 계정 로그인
 2. URL/admin 이동 후 admin 계정 session-id 획득
-3. cookie : guest 계정 session-id 값 => 획득한 admin 계정 seesion-id 값으로 수정
+3. cookie
+    session-id : guest 계정 session-id => 획득한 admin 계정 session-id로 변경
 4. home 화면 - flag 획득
