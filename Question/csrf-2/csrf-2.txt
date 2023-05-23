@@ -1,1 +1,13 @@
+Analysis)
+1. vuln(csrf) page  - 전달한 param 파라미터의 값을 출력
+                      파라미터에 frame, script, on 세 가지 키워드가 포함되어 있을 경우 *로 치환
 
+2. flag page        - GET  : URL을 입력받는 페이지를 제공
+                      POST : param 파라미터 값을 가져와 check_csrf함수의 인자로 넣고 호출
+                             check_csrf 함수는 인자를 다시 CSRF 취약점이 발생하는 URL의 파라미터로 설정하고, read_url 함수를 이용해 해당 URL 방문
+3. /change_password - password를 변경할 수 있는 페이지
+                      GET 메소드로 pw 파라미터를 넘겨 받고, 세션에서 username을 찾아 해당 username의 pw를 pw 파라미터로 변경
+
+Exploit) 
+- flag 페이지에서 change_password 페이지를 요청해 pw 값 변경
+   => http://127.0.0.1:8000/vuln?param=<img src="/change_password?pw=admin">
