@@ -1,0 +1,56 @@
+- MongoDB는 JSON 형태인 도큐먼트(Document)를 저장
+  1) 스키마를 따로 정의하지 않아 각 콜렉션(Collection)에 대한 정의가 필요하지 않음
+  2) JSON 형식으로 쿼리 작성 가능
+  3) _id 필드 = Primary Key 역할
+
+
+
+- MongoDB 연산자
+  1) Comparison
+     $eq     : 지정된 값과 같은 값 찾기 (equal)
+     $in     : 배열 안의 값들과 일치하는 값 찾기 (in)
+     $ne     : 지정된 값과 같지 않은 값 찾기 (not equal)
+     $nin    : 배열 안의 값들과 일치하지 않는 값 찾기 (not in)
+  
+  2) Logical
+     $and    : 논리적 AND, 각각의 쿼리를 모두 만족하는 문서 반환
+     $not    : 쿼리 식의 효과를 반전, 쿼리 식과 일치하지 않는 문서 반환
+     $nor    : 논리적 NOR, 각각의 쿼리를 모두 만족하지 않는 문서 반환
+     $or     : 논리적 OR, 각각의 쿼리 중 하나 이상 만족하는 문서 반환
+  
+  3) Element
+     $exists : 지정된 필드가 있는 문서 찾기
+     $type   : 지정된 필드가 지정된 유형인 문서 선택
+  
+  4) Evaluation
+     $expr   : 쿼리 언어 내에서 집계식 사용 가능
+     $regex  : 지정된 정규식과 일치하는 문서 선택
+     $text   : 지정된 텍스트 검색합
+     
+     
+     
+- 기본 문법
+  1) SELECT문
+     > SQL     : SELECT * FROM account;
+     > MongoDB : db.account.find()
+     
+     > SQL     : SELECT * FROM account WHERE user_id="admin";
+     > MongoDB : db.account.find({ user_id: "admin" })
+     
+     > SQL     : SELECT user_idx FROM account WHERE user_id="admin";
+     > MongoDB : db.account.find( { user_id: "admin" }, { user_idx:1, _id:0 } )
+     
+  2) INSERT문
+     > SQL     : INSERT INTO account(user_id, user_pw) VALUES ("guest", "guest");
+     > MongoDB : db.account.insert( { user_id: "guest", user_pw: "guest" } )
+     
+  3) DELETE문
+     > SQL     : DELETE FROM account;
+     > MongoDB : db.account.remove()
+     
+     > SQL     : DELETE FROM account WHERE user_id="guest";
+     > MongoDB : db.account.remove( { user_id: "guest" } )
+  
+  4) UPDATE문
+     > SQL     : UPDATE account SET user_id="guest2" WHERE user_idx=2;
+     > MongoDB : db.account.update( { user_idx: 2 }, { $set: { user_id: "guest2" } } )
