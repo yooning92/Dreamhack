@@ -1,0 +1,60 @@
+- Redis 
+  1) 키-값(Key-Value)의 쌍을 가진 데이터를 저장
+  2) 메모리 기반의 DBMS
+  3) 메모리를 사용해 데이터를 저장하고 접근하기 때문에 읽고 쓰는 작업이 다른 DBMS보다 훨씬 빠름
+  4) 다양한 서비스에서 임시 데이터를 캐싱하는 용도로 사용
+  
+
+- 데이터 조회 및 조작 명령어
+  1) GET
+     > 구조 : GET key 
+     > 용도 : 데이터 조회
+     
+  2) MGET
+     > 구조 : MGET key [key ...] 
+     > 용도 : 여러 데이터를 조회
+     
+  3) SET 
+     > 구조 : SET key value 
+     > 용도 : 새로운 데이터 추가
+     
+  4) MSET 
+     > 구조 : MSET key value [key value ...]
+     > 용도 : 여러 데이터를 추가
+     
+  5) DEL
+     > 구조 : DEL key [key ...] 
+     > 용도 : 데이터 삭제
+ 
+  6) EXISTS
+     > 구조 : EXISTS key [key ...]
+     > 용도 : 데이터 유무 확인
+ 
+  7) INCR 
+     > 구조 : INCR key 
+     > 용도 : 데이터 값에 1 더함
+  
+  8) DECR
+     > 구조 : DECR key 
+     > 용도 : 데이터 값에 1 뺌
+  
+- 관리 명령어
+  1) INFO
+     > 구조 : INFO [section]
+     > 용도 : DBMS 정보 조회
+  
+  2) CONFIG GET
+     > 구조 : CONFIG GET parameter
+     > 용도 : 설정 조회
+
+  3) CONFIG SET
+     > 구조 : CONFIG SET parameter value
+     > 용도 : 새로운 설정을 입력
+
+
+- 명령어 사용 예시
+  $ redis-cli
+  127.0.0.1:xxxx> SET test 1234
+  OK
+  127.0.0.1:xxxx> GET test
+  "1234"
